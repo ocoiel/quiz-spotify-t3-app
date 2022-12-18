@@ -7,7 +7,6 @@ import { trpc } from "../utils/trpc";
 import "../styles/globals.css";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { CopyrightLinearBanner } from "../components/CopyrightLinearBanner";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -20,7 +19,6 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <Component {...pageProps} />
       </div>
       <Footer />
-      <CopyrightLinearBanner />
     </SessionProvider>
   );
 };

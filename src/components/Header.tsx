@@ -31,14 +31,17 @@ export const Header = () => {
   return (
     <header className="fixed top-0 left-0 z-10 w-full border-b border-transparent-white backdrop-blur-[12px]">
       <Container className="flex h-navigation-height">
-        <Link className="flex items-center text-md" href="/">
-          <Logo className="mr-4 h-[1.8rem] w-[1.8rem]" /> Linear
+        <Link className="flex items-center justify-center  text-md" href="/">
+          <span className="mr-4 h-[2.4rem] w-[2.4rem] items-center justify-center divide-x divide-gray-400 text-lg">
+            🎧
+          </span>{" "}
+          <span className="font-bold italic">Quiz Play</span>
         </Link>
 
         <div
           className={classNames(
             "transition-[visibility] md:visible",
-            hamburgerMenuIsOpen ? "visible" : "delay-500 invisible"
+            hamburgerMenuIsOpen ? "visible" : "invisible delay-500"
           )}
         >
           <nav
@@ -57,25 +60,19 @@ export const Header = () => {
               )}
             >
               <li>
-                <Link href="#">Features</Link>
+                <Link href="#">Projeto</Link>
               </li>
               <li>
-                <Link href="#">Method</Link>
+                <Link href="#">Autor</Link>
               </li>
               <li className="md:hidden lg:block">
-                <Link href="#">Customers</Link>
+                <Link href="#">Como jogar</Link>
               </li>
               <li className="md:hidden lg:block">
                 <Link href="#">Changelog</Link>
               </li>
-              <li className="md:hidden lg:block">
-                <Link href="#">Integrations</Link>
-              </li>
               <li>
-                <Link href="#">Pricing</Link>
-              </li>
-              <li>
-                <Link href="#">Company</Link>
+                <Link href="#">Preço</Link>
               </li>
             </ul>
           </nav>
@@ -85,7 +82,7 @@ export const Header = () => {
           <Link className="mr-6 text-sm" href="#">
             Log in
           </Link>
-          <Button href="#">Sign up</Button>
+          {/* <Button href="#">Sign up</Button> */}
         </div>
 
         <button
