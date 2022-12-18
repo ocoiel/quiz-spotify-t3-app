@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { Container } from "../components/Container";
-import { Hero } from "../components/Hero";
+import { Hero, HeroSubitle, HeroTitle } from "../components/Hero";
 
 const Home: NextPage = () => {
   return (
@@ -16,11 +16,13 @@ const Home: NextPage = () => {
       </header>
       <main>
         <Container>
-          <Hero
-            title="Linear is a better way to build products"
-            subtitle="Meet the new standard for modern software development.
-            Streamline issues, sprints, and product roadmaps."
-          />
+          <Hero>
+            <HeroTitle>Linear is a better way to build products</HeroTitle>
+            <HeroSubitle>
+              Meet the new standard for modern software development. Streamline
+              issues, sprints, and product roadmaps.
+            </HeroSubitle>
+          </Hero>
         </Container>
       </main>
       <footer>

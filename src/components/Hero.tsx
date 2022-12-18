@@ -1,13 +1,19 @@
 interface IHero {
-  title: string;
-  subtitle: string;
+  children: React.ReactNode;
 }
 
-export function Hero({ title, subtitle }: IHero) {
-  return (
-    <div>
-      <h1>{title}</h1>
-      <p>{subtitle}</p>
-    </div>
-  );
+interface IHeroElement {
+  children: React.ReactNode;
+}
+
+export function HeroTitle({ children }: IHeroElement) {
+  return <h1 className="my-5 text-5xl">{children}</h1>;
+}
+
+export function HeroSubitle({ children }: IHeroElement) {
+  return <p className="mb-8 text-lg">{children}</p>;
+}
+
+export function Hero({ children }: IHero) {
+  return <div className="text-center">{children}</div>;
 }
