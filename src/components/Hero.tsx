@@ -1,19 +1,40 @@
-interface IHero {
+import classNames from "classnames";
+
+interface HeroProps {
   children: React.ReactNode;
 }
 
-interface IHeroElement {
+interface HeroElementProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-export function HeroTitle({ children }: IHeroElement) {
-  return <h1 className="my-5 text-5xl">{children}</h1>;
-}
+export const HeroTitle = ({ children, className }: HeroElementProps) => {
+  return (
+    <h1
+      className={classNames(
+        "text-gradient my-6 text-6xl md:text-8xl",
+        className
+      )}
+    >
+      {children}
+    </h1>
+  );
+};
 
-export function HeroSubitle({ children }: IHeroElement) {
-  return <p className="mb-8 text-lg">{children}</p>;
-}
+export const HeroSubtitle = ({ children, className }: HeroElementProps) => {
+  return (
+    <p
+      className={classNames(
+        "mb-12 text-lg text-primary-text md:text-xl",
+        className
+      )}
+    >
+      {children}
+    </p>
+  );
+};
 
-export function Hero({ children }: IHero) {
+export const Hero = ({ children }: HeroProps) => {
   return <div className="text-center">{children}</div>;
-}
+};
