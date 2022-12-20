@@ -65,7 +65,7 @@ export const Header = () => {
               <li>
                 <Link href="#">Projeto</Link>
               </li>
-              <li>
+              <li className="md:hidden lg:block">
                 <Link href="#">Autor</Link>
               </li>
               <li className="md:hidden lg:block">
@@ -74,7 +74,7 @@ export const Header = () => {
               <li className="md:hidden lg:block">
                 <Link href="#">Changelog</Link>
               </li>
-              <li>
+              <li className="md:hidden lg:block">
                 <Link href="#">Preço</Link>
               </li>
             </ul>

@@ -47,7 +47,7 @@ const footerLinks = [
   },
 ];
 
-export const Footer = () => (
+export const IndexFooter = () => (
   <footer className="mt-12 border-t border-transparent-white py-[5.6rem] text-sm">
     <Container className="flex flex-col justify-between lg:flex-row">
       <div>

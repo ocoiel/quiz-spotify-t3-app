@@ -1,13 +1,14 @@
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import { useSession } from "next-auth/react";
 import { Button, IconWrapper } from "../components/Button";
 import { ButtonLab } from "../components/ButtonLab";
 import { Container } from "../components/Container";
 import { Hero, HeroSubtitle, HeroTitle } from "../components/Hero";
 import { HeroImage } from "../components/HeroImage";
+import { IndexFooter } from "../components/IndexFooter";
 import { getServerAuthSession } from "../server/common/get-server-auth-session";
 
-export default function Homepage() {
+export default function Homepage(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { data: session } = useSession();
 
   return (
@@ -41,6 +42,7 @@ export default function Homepage() {
           <ButtonLab />
           <HeroImage />
         </Hero>
+        <IndexFooter />
       </Container>
     </div>
   );
