@@ -1,6 +1,7 @@
 import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
+import NextProgressBar from "nextjs-progressbar";
 
 import { trpc } from "../utils/trpc";
 
@@ -14,11 +15,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
+      <NextProgressBar color="#1DB954" />
       <Header />
       <div className="bg-page-gradient pt-navigation-height">
         <Component {...pageProps} />
       </div>
-      <Footer />
     </SessionProvider>
   );
 };

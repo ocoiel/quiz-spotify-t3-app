@@ -22,6 +22,7 @@
     "js-cookie": "^3.0.1",
     "next": "13.0.2",
     "next-auth": "^4.18.3",
+    "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intersection-observer": "^9.4.1",

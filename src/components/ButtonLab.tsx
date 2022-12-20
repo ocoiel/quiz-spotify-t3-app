@@ -1,10 +1,24 @@
+import { useSession, signIn, signOut } from "next-auth/react";
+import { trpc } from "../utils/trpc";
+
 export function ButtonLab() {
+  const { data: session } = useSession();
+
+  const { data: isAuthed } = trpc.auth.getSession.useQuery();
+
+  console.log(isAuthed);
+
   return (
     <div className="py-32 px-8">
       <div className="grid items-start justify-center gap-8">
         <div className="group relative">
           <div className="animate-tilt absolute -inset-0.5 rounded-lg bg-gradient-to-r from-lime-200 via-lime-500 to-lime-900 opacity-75 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200"></div>
-          <button className="relative flex items-center divide-x divide-gray-600 rounded-lg bg-black px-7 py-4 leading-none">
+          <button
+            onClick={(e) => {
+              session ? e.preventDefault() : signIn("spotify");
+            }}
+            className="relative flex items-center divide-x divide-gray-600 rounded-lg bg-black px-7 py-4 leading-none"
+          >
             <span className="flex items-center space-x-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +37,7 @@ export function ButtonLab() {
               <span className="pr-2 text-lg text-gray-100"> </span>
             </span>
             <span className="pl-6 text-lg text-green-400 transition duration-200 group-hover:text-gray-100">
-              Descubra aqui &rarr;
+              {session ? "Entrar na plataforma" : "Descubra aqui "}&rarr;
             </span>
           </button>
         </div>

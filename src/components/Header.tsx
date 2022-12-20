@@ -7,8 +7,11 @@ import { Container } from "./Container";
 import { HamburgerIcon } from "./icons/hamburger";
 import { Logo } from "./icons/logo";
 import classNames from "classnames";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export const Header = () => {
+  const { data: session } = useSession();
+
   const [hamburgerMenuIsOpen, setHamburgerMenuIsOpen] = useState(false);
 
   useEffect(() => {
@@ -29,7 +32,7 @@ export const Header = () => {
   }, [setHamburgerMenuIsOpen]);
 
   return (
-    <header className="fixed top-0 left-0 z-10 w-full border-b border-transparent-white backdrop-blur-[12px]">
+    <header className="fixed top-0 left-0 z-10 w-full border-b border-transparent-white backdrop-blur-[20px]">
       <Container className="flex h-navigation-height">
         <Link className="flex items-center justify-center  text-md" href="/">
           <span className="mr-4 h-[2.4rem] w-[2.4rem] items-center justify-center divide-x divide-gray-400 text-lg">
@@ -80,7 +83,14 @@ export const Header = () => {
 
         <div className="ml-auto flex h-full items-center">
           <Link className="mr-6 text-sm" href="#">
-            Log in
+            {session ? (
+              <>
+                <span>Bem vindo {session.user?.name}</span> |{" "}
+                <button onClick={() => signOut()}>Log out</button>
+              </>
+            ) : (
+              <span>Log in</span>
+            )}
           </Link>
           {/* <Button href="#">Sign up</Button> */}
         </div>
