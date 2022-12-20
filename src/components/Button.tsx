@@ -3,11 +3,16 @@ import { cva } from "class-variance-authority";
 import type { VariantProps } from "class-variance-authority";
 import type { AnchorHTMLAttributes } from "react";
 
-interface ButtonProps
+export interface ButtonProps
   extends VariantProps<typeof buttonClasses>,
     AnchorHTMLAttributes<HTMLAnchorElement> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  type?: "button" | "submit" | "reset";
   href: string;
+  disabled?: boolean;
+  icon?: React.ReactNode;
+  isLoading?: boolean;
+  loadingText?: string;
 }
 
 const buttonClasses = cva("relative rounded-full inline-flex items-center", {
@@ -48,10 +53,28 @@ export const Button = ({
   return (
     <Link
       {...props}
-      className={buttonClasses({ variant, size, className: props.className })}
+      type={props.type}
+      className={
+        buttonClasses({ variant, size, className: props.className }) +
+        `${
+          props.disabled || props.isLoading
+            ? "cursor-not-allowed bg-zinc-900"
+            : "bg-zinc-800"
+        }`
+      }
       href={href}
     >
-      {children}
+      {props.isLoading ? (
+        <>
+          {/* <Loader /> */}
+          {props.loadingText ?? "Loading..."}
+        </>
+      ) : (
+        <>
+          {props.icon} ? <div className="mr-2">{props.icon}</div> : {null}
+          {children}
+        </>
+      )}
     </Link>
   );
 };
